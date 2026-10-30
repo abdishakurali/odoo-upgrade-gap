@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_block_sale" model="ir.ui.view">
+        <field name="name">res.partner.form.block.sale</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="sale.res_partner_view_buttons"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_warn_msg']" position="before">
+                <field name="sale_block" widget="boolean_toggle"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_view_block_purchase" model="ir.ui.view">
+        <field name="name">res.partner.form.block.purchase</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="purchase.res_partner_view_purchase_buttons"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='purchase_warn_msg']" position="before">
+                <field name="purchase_block" widget="boolean_toggle"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_view_block_invoice" model="ir.ui.view">
+        <field name="name">res.partner.form.block.invoice</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='accounting']" position="inside">
+                <group string="Invoice warning" name="invoice_warning">
+                    <field name="invoice_block" widget="boolean_toggle"/>
+                    <field name="invoice_warn_msg" nolabel="1" colspan="2" placeholder="e.g. Check the credit before invoicing this customer."/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
