@@ -1,6 +1,6 @@
 {
     "name": "Blocking Warnings for Contacts and Products",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Sales/Sales",
     "summary": "Block sales, purchases and invoices for a contact, and block a product on order lines: the 'Block' option Odoo 19 removed",
     "description": "Odoo 19 kept only the warning message. This module brings back the Block choice of Odoo 18: tick Block next to the message "
