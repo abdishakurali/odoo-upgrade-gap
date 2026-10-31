@@ -15,7 +15,13 @@
         "views/product_template_views.xml",
         "views/account_move_views.xml",
     ],
-    "images": ["static/description/banner.png"],
+    "images": [
+        "static/description/banner.png",
+        "static/description/screenshots/01-block-a-contact.jpg",
+        "static/description/screenshots/02-the-order-is-stopped.jpg",
+        "static/description/screenshots/03-recalled-product.jpg",
+        "static/description/screenshots/04-invoice-reminder.jpg",
+    ],
     "application": False,
     "installable": True,
 }
