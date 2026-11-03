@@ -13,7 +13,8 @@ class AccountMove(models.Model):
     def _compute_partner_invoice_warning(self):
         for move in self:
             partner = move.partner_id.commercial_partner_id
-            move.partner_invoice_warning = partner.invoice_warn_msg if move.move_type in INVOICE_TYPES and partner else False
+            show = move.move_type in INVOICE_TYPES and partner and partner.invoice_warn not in (False, "no-message")
+            move.partner_invoice_warning = partner.invoice_warn_msg if show else False
 
     @api.constrains("partner_id", "move_type")
     def _check_partner_not_blocked(self):
