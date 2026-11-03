@@ -1,18 +1,17 @@
 {
     "name": "Blocking Warnings for Contacts and Products",
-    "version": "19.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Sales/Sales",
-    "summary": "Block sales, purchases and invoices for a contact, and block a product on order lines: the 'Block' option Odoo 19 removed",
-    "description": "Odoo 19 kept only the warning message. This module brings back the Block choice of Odoo 18: tick Block next to the message "
-    "and the contact cannot be used on a sales order, purchase order or invoice; the same for products on order lines.",
+    "summary": "Enforce Odoo's Blocking Message on the server: blocked contacts and products cannot reach a sales order, purchase order or invoice",
+    "description": "In Odoo 17 the Blocking Message choice only acts in the form. This module enforces it on the server: a blocked contact "
+    "cannot be saved on a sales order, purchase order or invoice (also through import or the API), a quotation or bill cannot be confirmed "
+    "or posted once the contact is blocked, and a blocked product cannot be put on an order line.",
     "author": "Abdishakur Ali",
     "maintainer": "Abdishakur Ali <info@franchisetech.ro>",
     "website": "https://apps.odoo.com/apps/modules/browse?author=Abdishakur%20Ali",
     "license": "LGPL-3",
     "depends": ["sale", "purchase", "account"],
     "data": [
-        "views/res_partner_views.xml",
-        "views/product_template_views.xml",
         "views/account_move_views.xml",
     ],
     "images": [

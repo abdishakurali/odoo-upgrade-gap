@@ -86,9 +86,29 @@ class TestBlock(TransactionCase):
         self.assertIn("Credit check first.", str(caught.exception))
 
     def test_the_invoice_message_is_shown_on_the_draft_invoice(self):
-        partner = self.env["res.partner"].create({"name": "Notice", "invoice_warn_msg": "Send the PO number."})
+        partner = self.env["res.partner"].create({"name": "Notice", "invoice_warn": "warning", "invoice_warn_msg": "Send the PO number."})
         move = self.env["account.move"].create({"move_type": "out_invoice", "partner_id": partner.id})
         self.assertEqual(move.partner_invoice_warning, "Send the PO number.")
+
+    def test_the_switch_and_the_native_blocking_choice_stay_in_sync(self):
+        partner = self.env["res.partner"].create({"name": "Native", "sale_warn": "block", "sale_warn_msg": "Native block."})
+        self.assertTrue(partner.sale_block)
+        with self.assertRaises(ValidationError):
+            self.sale(partner)
+        partner.sale_block = False
+        self.assertEqual(partner.sale_warn, "warning")
+        self.assertTrue(self.sale(partner))
+        self.product.product_tmpl_id.sale_line_block = True
+        self.assertEqual(self.product.product_tmpl_id.sale_line_warn, "block")
+
+    def test_a_blocked_contact_cannot_be_posted_after_the_draft(self):
+        partner = self.env["res.partner"].create({"name": "Later"})
+        move = self.env["account.move"].create({"move_type": "out_invoice", "partner_id": partner.id,
+                                                "invoice_line_ids": [(0, 0, {"name": "Line", "quantity": 1, "price_unit": 10})]})
+        partner.invoice_block = True
+        with self.assertRaises(ValidationError):
+            move.action_post()
+        self.assertEqual(move.state, "draft")
 
     def test_journal_entries_are_never_blocked(self):
         self.fine.write({"invoice_block": True})
