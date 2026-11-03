@@ -1,18 +1,18 @@
-from odoo import api, models
+from odoo import _, api, models
 from odoo.exceptions import ValidationError
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    @api.onchange("partner_id")
     def _onchange_partner_block(self):
-        """Like Odoo 18: choosing a blocked contact shows the reason and clears the field."""
+        # Odoo 16-18 already shows the reason and clears the contact in the form for a blocking message (native onchange),
+        # so this helper is not registered as a second onchange (that would show the message twice).
         for order in self:
             message = order.partner_id._blocking_message("sale", order) if order.partner_id else False
             if message:
                 order.partner_id = False
-                return {"warning": {"title": self.env._("Blocked contact"), "message": message}}
+                return {"warning": {"title": _("Blocked contact"), "message": message}}
 
     @api.constrains("partner_id")
     def _check_partner_not_blocked(self):
