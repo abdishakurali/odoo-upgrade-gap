@@ -1,8 +1,8 @@
 {
-    "name": "Blocking Warnings for Contacts and Products",
+    "name": "Block Customers and Products",
     "version": "19.0.1.0.0",
     "category": "Sales/Sales",
-    "summary": "Block sales, purchases and invoices for a contact, and block a product on order lines: the 'Block' option Odoo 19 removed",
+    "summary": "Blocking message for Odoo 19 and 20, back from Odoo 18: block customer, block vendor and block product with your own reason. Separate switches stop sales orders, purchase orders and invoices for a contact, and order lines for a blocked product. Free. Not a credit limit check: to block customers with overdue invoices automatically, add the paid Pro version (partner_warn_block_pro).",
     "description": "Odoo 19 kept only the warning message. This module brings back the Block choice of Odoo 18: tick Block next to the message "
     "and the contact cannot be used on a sales order, purchase order or invoice; the same for products on order lines.",
     "author": "Abdishakur Ali",
