@@ -1,8 +1,8 @@
 {
-    "name": "Blocking Warnings for Contacts and Products",
+    "name": "Block Customers and Products",
     "version": "18.0.1.0.0",
     "category": "Sales/Sales",
-    "summary": "Enforce Odoo's Blocking Message on the server: blocked contacts and products cannot reach a sales order, purchase order or invoice",
+    "summary": "Blocking message enforced on the server for Odoo 18: block customer, block vendor and block product for real, also through import, the API, confirming a quotation and posting an invoice. Standard Odoo applies the blocking message only in the form. Free. Not a credit limit check: to block customers with overdue invoices automatically, add the paid Pro version (partner_warn_block_pro).",
     "description": "In Odoo 18 the Blocking Message choice only acts in the form. This module enforces it on the server: a blocked contact "
     "cannot be saved on a sales order, purchase order or invoice (also through import or the API), a quotation or bill cannot be confirmed "
     "or posted once the contact is blocked, and a blocked product cannot be put on an order line.",
