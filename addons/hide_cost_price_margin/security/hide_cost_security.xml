@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_show_cost_price" model="res.groups">
+        <field name="name">Show Cost Price &amp; Margin</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+        <field name="comment">Users in this group see product cost price, sale margins and stock valuation figures.</field>
+    </record>
+
+    <!-- Settings admins, Sales managers and Inventory managers keep seeing costs -->
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_show_cost_price'))]"/>
+    </record>
+    <record id="sales_team.group_sale_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_show_cost_price'))]"/>
+    </record>
+    <record id="stock.group_stock_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_show_cost_price'))]"/>
+    </record>
+</odoo>
