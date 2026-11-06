@@ -1,0 +1,65 @@
+<section style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #2B1F28; max-width: 1080px; margin: 0 auto; padding: 0 16px;">
+
+    <!-- hero -->
+    <div style="background: #F6F2F5; border-radius: 18px; padding: 44px 40px; margin: 16px 0 28px 0;">
+        <p style="color: #714B67; font-weight: 600; font-size: 15px; margin: 0 0 8px 0; letter-spacing: 0.4px;">FREE &middot; LGPL-3 &middot; ODOO 16, 17, 18, 19, 20</p>
+        <h1 style="font-size: 36px; line-height: 1.2; font-weight: 800; margin: 0 0 12px 0; color: #2B1F28;">Hide Cost Price and Margin from Salespeople</h1>
+        <p style="font-size: 19px; line-height: 1.5; margin: 0; color: #4A3044;">Salespeople keep selling. Product cost, sale margin and stock valuation figures disappear for everyone who is not a manager.</p>
+    </div>
+
+    <!-- why -->
+    <div style="margin: 0 0 28px 0;">
+        <h2 style="font-size: 24px; font-weight: 700; color: #714B67; margin: 0 0 10px 0;">Why</h2>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0;">Out of the box, every sales user can open a product and read its cost, and can add the margin column to a quotation. Your discount floor, supplier prices and real margins are then one click away from every salesperson, and from the customers they talk to. This module hides those figures for users who are not in a new group, <b>Show Cost Price &amp; Margin</b>, without changing how prices, margins and valuation are computed.</p>
+    </div>
+
+    <!-- features -->
+    <div style="margin: 0 0 28px 0;">
+        <h2 style="font-size: 24px; font-weight: 700; color: #714B67; margin: 0 0 10px 0;">What it hides</h2>
+        <ul style="font-size: 16px; line-height: 1.7; margin: 0; padding-left: 22px;">
+            <li><b>Product cost</b> (<code>standard_price</code>) on the product form, list and kanban, for products and variants, with its label and the "per unit" box.</li>
+            <li><b>Sales order margin</b>: margin and margin % on the order, and cost, margin and margin % on the order lines (form and list).</li>
+            <li><b>Inventory valuation figures</b> on products, lots and stock moves (average cost, total value, move value) where your Odoo version has them.</li>
+            <li><b>Exports</b>: exporting any of these fields, directly or through a relation (for example <code>order_line/margin</code> or <code>product_id/standard_price</code>), is refused with a clear message.</li>
+            <li><b>Field lists</b>: the fields are left out of the export and import dialogs and of the pivot "Measures" menu, so "Margin" cannot be added back by hand.</li>
+            <li>Works on <b>every view</b> of these models, including views added by other modules, and on order lines shown inside other forms.</li>
+            <li><b>Strict mode</b> (optional setting): cost price and sale margin are also blocked over the API (read, write and group by), as if the fields had a security group.</li>
+        </ul>
+    </div>
+
+    <!-- how to -->
+    <div style="margin: 0 0 28px 0;">
+        <h2 style="font-size: 24px; font-weight: 700; color: #714B67; margin: 0 0 10px 0;">How to use it</h2>
+        <ol style="font-size: 16px; line-height: 1.7; margin: 0; padding-left: 22px;">
+            <li>Install the module. Settings administrators, Sales managers and Inventory managers get <b>Show Cost Price &amp; Margin</b> automatically and see everything as before.</li>
+            <li>Everyone else (salespeople, warehouse users) no longer sees cost, margin or valuation figures.</li>
+            <li>To let one more person see costs: Settings &gt; Users &amp; Companies &gt; Groups &gt; <b>Show Cost Price &amp; Margin</b> &gt; add the user.</li>
+            <li>Optional: Settings &gt; Sales &gt; <b>Cost Price Visibility</b> &gt; tick <b>Strict cost hiding</b> to block the fields over the API too.</li>
+        </ol>
+    </div>
+
+    <!-- good to know -->
+    <div style="background: #FFFFFF; border: 1px solid #E9DDE5; border-radius: 14px; padding: 22px 26px; margin: 0 0 28px 0;">
+        <h2 style="font-size: 22px; font-weight: 700; color: #714B67; margin: 0 0 10px 0;">Good to know</h2>
+        <ul style="font-size: 15px; line-height: 1.7; margin: 0; padding-left: 22px;">
+            <li>Sales orders, pricelists based on cost and receipts keep working for users without the group. Margins are still computed and visible to managers.</li>
+            <li>Default mode hides the fields in screens and exports. A technical user who calls the API directly (XML-RPC or JSON-RPC) can still read them until you turn on strict mode.</li>
+            <li>Strict mode covers product cost and sales order cost and margin. Stock valuation fields stay hidden in screens and exports only, because Odoo's stock engine writes them as the warehouse user.</li>
+            <li>In strict mode, other modules that read the cost as the current user (for example Point of Sale loading product data, or custom code) can fail for users without the group. Try it on a copy of your database first.</li>
+            <li>Purchase orders, vendor bills and PDF reports are not changed. Give salespeople no Purchase or Accounting access if they must not see supplier prices.</li>
+        </ul>
+    </div>
+
+    <!-- need more -->
+    <div style="background: #714B67; color: #FFFFFF; border-radius: 14px; padding: 22px 26px; margin: 0 0 28px 0;">
+        <h2 style="font-size: 22px; font-weight: 700; margin: 0 0 8px 0; color: #FFFFFF;">Need more? Hide or lock any field per group</h2>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 10px 0; color: #FFFFFF;"><a href="https://apps.odoo.com/apps/modules/19.0/access_rules_pro" style="color: #3DD6B5; font-weight: 700;">Field Access Rights</a> (69 EUR): hide or make read-only any field for any user group, for example lock prices once an order is confirmed.</p>
+        <p style="font-size: 15px; line-height: 1.6; margin: 0; color: #FFFFFF;">For sales managers: <a href="https://apps.odoo.com/apps/modules/19.0/sales_commission_community" style="color: #3DD6B5; font-weight: 700;">Sales Commission Rules</a> (49 EUR).</p>
+    </div>
+
+    <!-- compatibility and support -->
+    <div style="text-align: center; margin: 0 0 24px 0;">
+        <p style="font-size: 16px; font-weight: 600; margin: 0 0 6px 0;">Odoo 16, 17, 18, 19, 20 &middot; Community and Enterprise</p>
+        <p style="font-size: 15px; color: #6B6470; margin: 0;">Support: <a href="mailto:info@franchisetech.ro" style="color: #714B67;">info@franchisetech.ro</a> (SALUT TECH SRL)</p>
+    </div>
+</section>
